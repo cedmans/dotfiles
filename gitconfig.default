@@ -1,0 +1,32 @@
+[user]
+	name = Cedric Wienold
+	email = cwienold@gmail.com
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	lg = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	lnc = log --pretty-format:"%h\\ %s\\ [%cn]"
+	dl = "!git ll -1" # Show files in last commit
+	dlc = diff --cached HEAD^ # Show diff of last commit
+	dr = "!f() { git diff "$1"^.."$1"; }; f"
+	lc = "!f() { git ll "$1"^.."$1"; }; f"
+	diffr = "!f() { git diff "$1"^.."$1"; }; f"
+	b = branch
+	d = diff --color
+	ds = diff --staged --color
+	diff = diff --color
+	standup = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(green)<%an>%Creset' --abbrev-commit --date=relative --committer='cwienold@itech-solutions.com' --all --since='yesterday'
+
+	find = "!git ls-files | grep"
+	ifind = "!git ls-files | grep -i"
+[core]
+	pager = less -x1,5
+	editor = vim
+[color]
+	ui = true
+	status = always
+[push]
+	default = matching
