@@ -19,6 +19,7 @@
 	ds = diff --staged --color
 	diff = diff --color
 	standup = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(green)<%an>%Creset' --abbrev-commit --date=relative --committer='cwienold@itech-solutions.com' --all --since='yesterday'
+	rm-merged = "!f() { git branch --merged | grep -v \"\\*\" | grep -v master | grep -v develop | xargs --no-run-if-empty -n 1 git branch -d; }; f"
 
 	find = "!git ls-files | grep"
 	ifind = "!git ls-files | grep -i"
