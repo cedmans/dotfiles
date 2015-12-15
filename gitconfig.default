@@ -30,4 +30,4 @@
 	ui = true
 	status = always
 [push]
-	default = matching
+	default = simple
