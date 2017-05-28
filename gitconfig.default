@@ -9,6 +9,7 @@
   lg = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
   ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
   lnc = log --pretty-format:"%h\\ %s\\ [%cn]"
+  branchdiff = "!f() { git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative $1..$2; }; f"
   dl = "!git ll -1" # Show files in last commit
   dlc = diff --cached HEAD^ # Show diff of last commit
   dr = "!f() { git diff "$1"^.."$1"; }; f"
@@ -22,6 +23,8 @@
   last = log HEAD^..
   rm-merged = "!f() { git branch --merged | grep -v \"\\*\" | grep -v master | grep -v develop | xargs --no-run-if-empty -n 1 git branch -d; }; f"
   sdiff ="!f() { meld $(git rev-parse --show-toplevel) $(git config surround.workspace)/$(git rev-parse --abbrev-ref HEAD); }; f"
+
+  monday = "!git lg --since=\"7 days ago\""
 
   root = rev-parse --show-toplevel
 
@@ -39,3 +42,10 @@
   status = always
 [push]
   default = current
+
+[diff]
+      tool = meld
+[difftool]
+      prompt = false
+[difftool "meld"]
+      cmd = meld "$LOCAL" "$REMOTE"
