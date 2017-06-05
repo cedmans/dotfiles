@@ -49,3 +49,5 @@
       prompt = false
 [difftool "meld"]
       cmd = meld "$LOCAL" "$REMOTE"
+[rerere]
+	enabled = true
