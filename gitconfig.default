@@ -19,7 +19,7 @@
   d = diff --color
   ds = diff --staged --color
   diff = diff --color
-  standup = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(green)<%an>%Creset' --abbrev-commit --date=relative --author='cedric@ipromote.com' --author='cwienold@gmail.com' --all --since='yesterday'
+  standup = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(green)<%an>%Creset' --abbrev-commit --date=relative --author='cedric.wienold@fastretailing.com' --author='cedric@ipromote.com' --author='cwienold@gmail.com' --all --since='yesterday'
   last = log HEAD^..
   rm-merged = "!f() { git branch --merged | grep -v \"\\*\" | grep -v master | grep -v develop | xargs --no-run-if-empty -n 1 git branch -d; }; f"
   sdiff ="!f() { meld $(git rev-parse --show-toplevel) $(git config surround.workspace)/$(git rev-parse --abbrev-ref HEAD); }; f"
@@ -34,6 +34,10 @@
 
   find = "!git ls-files | grep"
   ifind = "!git ls-files | grep -i"
+  meld = !/home/cedric/.bin/git-meld.pl
+
+  nah = "!git reset --hard && git clean -fd"
+  realblame = blame -w -M
 [core]
   pager = less -x1,5
   editor = vim
@@ -41,7 +45,7 @@
   ui = true
   status = always
 [push]
-  default = current
+  default = upstream
 
 [diff]
       tool = meld
@@ -50,4 +54,4 @@
 [difftool "meld"]
       cmd = meld "$LOCAL" "$REMOTE"
 [rerere]
-	enabled = true
+  enabled = false
