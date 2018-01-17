@@ -1,6 +1,7 @@
 [user]
   name = Cedric Wienold
   email = cwienold@gmail.com
+  signingkey = 19C95B83D4AE87B5215A1E5AE20327F59F2FDA62
 [alias]
   st = status
   ci = commit
@@ -55,3 +56,7 @@
       cmd = meld "$LOCAL" "$REMOTE"
 [rerere]
   enabled = false
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
