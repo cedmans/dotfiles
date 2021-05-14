@@ -24,6 +24,8 @@
   last = log HEAD^..
   rm-merged = "!f() { git branch --merged | grep -v \"\\*\" | grep -v master | grep -v develop | xargs --no-run-if-empty -n 1 git branch -d; }; f"
   sdiff ="!f() { meld $(git rev-parse --show-toplevel) $(git config surround.workspace)/$(git rev-parse --abbrev-ref HEAD); }; f"
+  names = show --name-only
+  amend = commit --amend --no-edit
 
   monday = "!git lg --since=\"7 days ago\""
 
@@ -60,3 +62,5 @@
 	gpgsign = true
 [gpg]
 	program = gpg2
+[pull]
+	rebase = true
