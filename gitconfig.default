@@ -1,10 +1,12 @@
 [user]
   name = Cedric Rutland Wienold
-  email = cwienold@gmail.com
-  signingkey = 19C95B83D4AE87B5215A1E5AE20327F59F2FDA62
+  email = cedric@cedmans.io
+  signingkey = 0xACDE07E0ED63DFED
 [alias]
   st = status
   ci = commit
+  wip = commit --no-gpg-sign
+  wip-amend = wip --amend --no-edit
   br = branch
   co = checkout
   lg = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
@@ -20,7 +22,7 @@
   d = diff --color
   ds = diff --staged --color
   diff = diff --color
-  standup = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(green)<%an>%Creset' --abbrev-commit --date=relative --author='cedric.wienold@fastretailing.com' --author='cedric@ipromote.com' --author='cwienold@gmail.com' --all --since='yesterday'
+  standup = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(green)<%an>%Creset' --abbrev-commit --date=relative --author='cedric@cedmans.io' --author='cwienold@gmail.com' --all --since='yesterday'
   last = log HEAD^..
   rm-merged = "!f() { git branch --merged | grep -v \"\\*\" | grep -v master | grep -v develop | xargs --no-run-if-empty -n 1 git branch -d; }; f"
   sdiff ="!f() { meld $(git rev-parse --show-toplevel) $(git config surround.workspace)/$(git rev-parse --abbrev-ref HEAD); }; f"
@@ -41,9 +43,11 @@
 
   nah = "!git reset --hard && git clean -fd"
   realblame = blame -w -M
+  dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
 [core]
   pager = less -x1,5
   editor = vim
+  excludesfile = ~/.config/git/excludes
 [color]
   ui = true
   status = always
@@ -59,8 +63,10 @@
 [rerere]
   enabled = false
 [commit]
-	gpgsign = true
+  gpgsign = true
 [gpg]
-	program = gpg2
+  program = gpg2
 [pull]
-	rebase = true
+  rebase = true
+[log]
+  showsignature = true
