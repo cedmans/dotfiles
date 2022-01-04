@@ -64,8 +64,6 @@
   enabled = false
 [commit]
   gpgsign = true
-[gpg]
-  program = gpg2
 [pull]
   rebase = true
 [log]
